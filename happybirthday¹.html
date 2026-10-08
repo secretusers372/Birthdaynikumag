@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday! 🎂</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffd6e7, #e1d5ff, #c9f4ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 12px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            padding: 28px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 35px rgba(120, 70, 150, 0.2);
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cake {
+            font-size: 80px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #ff4f91;
+            margin: 12px 0;
+        }
+
+        .name {
+            font-size: 26px;
+            color: #8855cc;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .line {
+            width: 75px;
+            height: 4px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #ff5796, #a77bff);
+            margin: 15px auto;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        button:hover {
+            filter: brightness(1.05);
+            transform: translateY(-2px);
+        }
+
+        .pink {
+            background: linear-gradient(45deg, #ff5796, #ff91bb);
+        }
+
+        .purple {
+            background: linear-gradient(45deg, #8658e8, #b28aff);
+        }
+
+        .orange {
+            background: linear-gradient(45deg, #ff9b44, #ffca65);
+        }
+
+        .blue {
+            background: linear-gradient(45deg, #438bea, #76c2ff);
+        }
+
+        .green {
+            background: linear-gradient(45deg, #27ae91, #68d9bd);
+        }
+
+        .card {
+            display: none;
+            background: #fff2f8;
+            padding: 20px 15px;
+            margin-top: 20px;
+            border-radius: 18px;
+            border: 2px dashed #ff91bb;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .card h2 {
+            color: #ff5796;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.9;
+            white-space: pre-line;
+        }
+
+        .video-box {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .video-box h2 {
+            color: #8855cc;
+            font-size: 21px;
+            margin-bottom: 15px;
+        }
+
+        video {
+            display: block;
+            width: 100%;
+            max-height: 400px;
+            border-radius: 15px;
+            background: #222;
+            object-fit: contain;
+        }
+
+        .video-help {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .close {
+            margin-top: 15px;
+            width: auto;
+            padding: 10px 25px;
+            background: #888;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #9879aa;
+            font-size: 12px;
+        }
+
+        .balloon {
+            position: fixed;
+            bottom: -100px;
+            font-size: 35px;
+            pointer-events: none;
+            z-index: 1;
+            animation: floatUp 6s linear forwards;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-120vh) rotate(30deg);
+                opacity: 0;
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            top: -20px;
+            pointer-events: none;
+            z-index: 10;
+            animation: fall 4s linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 380px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .name {
+                font-size: 23px;
+            }
+
+            .container {
+                padding: 22px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <div class="cake">🎂</div>
+
+        <h1>Happy Birthday!</h1>
+
+        <div class="name" id="birthdayName">Rialyn kumag💗</div>
+
+        <div class="line"></div>
+
+        <p class="subtitle">
+         Paldo happy birthday astig kumag kaparin boss
+        </p>
+
+        <div class="buttons">
+
+            <button class="pink" onclick="showMessage()">
+                💌 Open Birthday Message
+            </button>
+
+            <button class="purple" onclick="showVideo()">
+                🎥 Watch Your Video Message
+            </button>
+
+            <button class="orange" onclick="showSpecial()">
+                💖 A Special Message daw to sabi nila
+            </button>
+
+            <button class="green" onclick="celebrate()">
+                🎉 Let's Celebrate! wag i celebrate 
+            </button>
+
+            <button class="blue" onclick="toggleMusic()" id="musicButton">
+                🎥 Play record from the Lord
+            </button>
+
+            <button class="pink" onclick="showSurprise()">
+                🎁 Open Your Surprise
+            </button>
+
+        </div>
+
+        <!-- BIRTHDAY MESSAGE -->
+        <section class="card" id="messageCard">
+
+            <h2>💌 Birthday Wishes</h2>
+
+            <p>Happy Birthday! 
+        I hope maging strong ka hahaha sakitin yarn?
+
+May you achieve your dreams, grow into the person you want to become, and always find reasons to smile. plastic tan 
+
+You deserve love, peace, and all the good things life has to offer. eme lang to kumag
+
+Enjoy your special day! 🥳✨</p>
+
+            <button class="close" onclick="closeAll()">Close ✖</button>
+
+        </section>
+
+        <!-- VIDEO MESSAGE -->
+        <section class="video-box" id="videoBox">
+
+            <h2>🎥 A Special Video for You!</h2>
+
+            <video id="birthdayVideo" controls playsinline preload="metadata">
+                <source src="./birthday-video.mp4" type="video/mp4">
+                Your browser does not support HTML video.
+            </video>
+
+            <p class="video-help" id="videoHelp">
+                Enjoy this little birthday video! 💗
+            </p>
+
+            <button class="close" onclick="closeAll()">Close ✖</button>
+
+        </section>
+
+        <!-- SPECIAL MESSAGE -->
+        <section class="card" id="specialCard">
+
+            <h2>💖 A Message from the Heart mula sa puso ni Lord </h2>
+
+            <p>Always remember that you are special and appreciated.
+
+May God guide you in every step, give you strength during difficult days, and bless you with wisdom, peace, and genuine happiness.
+
+Keep believing on God bro and never stop pursuing your dreams.
+
+May this new chapter of your life bring you closer to your goals and to God.
+
+Happy Birthday! 🙏💗</p>
+
+            <button class="close" onclick="closeAll()">Close ✖</button>
+
+        </section>
+
+        <!-- SURPRISE MESSAGE -->
+        <section class="card" id="surpriseCard">
+
+            <h2>🎁 Your Surprise!</h2>
+
+            <p>Surprise! 🎉💗
+
+You made it to another year of life, another year of growth, and another year of new possibilities.
+
+May you always have people who support you, moments that make you smile, and reasons to be thankful.
+
+Never forget how much your presence can mean to others.
+
+Here's to more wonderful memories ahead! 🥳
+wag ka maniwala plastic lang yan ✨</p>
+
+            <div style="font-size: 45px; margin-top: 15px;">
+                🎂🎈💐💝
+            </div>
+
+            <button class="close" onclick="closeAll()">Close ✖</button>
+
+        </section>
+
+        <p class="footer">
+            Made with love 💗 just for you.
+        </p>
+
+    </main>
+
+    <!-- BACKGROUND MUSIC -->
+    <audio id="birthdayMusic" loop preload="none">
+        <source src="./birthday-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // CHANGE THE NAME HERE
+        const birthdayName = "RIALYN ASTIG";
+
+        document.getElementById("birthdayName").textContent =
+            birthdayName + " 💗";
+
+        const messageCard = document.getElementById("messageCard");
+        const videoBox = document.getElementById("videoBox");
+        const specialCard = document.getElementById("specialCard");
+        const surpriseCard = document.getElementById("surpriseCard");
+
+        const video = document.getElementById("birthdayVideo");
+        const music = document.getElementById("birthdayMusic");
+        const videoHelp = document.getElementById("videoHelp");
+        const musicButton = document.getElementById("musicButton");
+
+        function closeAll() {
+            messageCard.style.display = "none";
+            videoBox.style.display = "none";
+            specialCard.style.display = "none";
+            surpriseCard.style.display = "none";
+
+            video.pause();
+        }
+
+        function showMessage() {
+            closeAll();
+            messageCard.style.display = "block";
+        }
+
+        async function showVideo() {
+            closeAll();
+            videoBox.style.display = "block";
+
+            videoHelp.textContent = "Loading video...";
+
+            video.load();
+
+            try {
+                await video.play();
+                videoHelp.textContent = "Enjoy this little birthday video! 💗";
+            } catch (error) {
+                videoHelp.textContent =
+                    "Tap the play button on the video to start watching.";
+            }
+
+            videoBox.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }
+
+        function showSpecial() {
+            closeAll();
+            specialCard.style.display = "block";
+        }
+
+        function showSurprise() {
+            closeAll();
+            surpriseCard.style.display = "block";
+            createConfetti();
+        }
+
+        function celebrate() {
+            createConfetti();
+            createBalloons();
+
+            alert(
+                "🎉 HAPPY BIRTHDAY, " +
+                birthdayName.toUpperCase() +
+                "! 🎂💗"
+            );
+        }
+
+        function createConfetti() {
+            const symbols = ["🎉", "💖", "✨", "🎊", "💕", "⭐"];
+
+            for (let i = 0; i < 60; i++) {
+                const item = document.createElement("div");
+
+                item.className = "confetti";
+                item.textContent =
+                    symbols[Math.floor(Math.random() * symbols.length)];
+
+                item.style.left = Math.random() * 100 + "vw";
+                item.style.fontSize = (14 + Math.random() * 15) + "px";
+                item.style.animationDuration = (2 + Math.random() * 3) + "s";
+
+                document.body.appendChild(item);
+
+                setTimeout(() => item.remove(), 5000);
+            }
+        }
+
+        function createBalloons() {
+            const symbols = ["🎈", "💗", "🎈", "🎈", "💕"];
+
+            for (let i = 0; i < 12; i++) {
+                const balloon = document.createElement("div");
+
+                balloon.className = "balloon";
+                balloon.textContent =
+                    symbols[Math.floor(Math.random() * symbols.length)];
+
+                balloon.style.left = Math.random() * 100 + "vw";
+                balloon.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+                document.body.appendChild(balloon);
+
+                setTimeout(() => balloon.remove(), 8500);
+            }
+        }
+
+        let musicPlaying = false;
+
+        async function toggleMusic() {
+            if (!musicPlaying) {
+                try {
+                    await music.play();
+
+                    musicPlaying = true;
+                    musicButton.textContent = "⏸️ Pause Birthday Music";
+                } catch (error) {
+                    alert(
+                        "Music not found. Check that birthday-music.mp3 " +
+                        "is in the same folder as index.html."
+                    );
+                }
+            } else {
+                music.pause();
+
+                musicPlaying = false;
+                musicButton.textContent = "🎵 Play Birthday Music";
+            }
+        }
+
+        // Show a few balloons when the page opens
+        window.addEventListener("load", () => {
+            setTimeout(createBalloons, 1000);
+        });
+
+        // Display an error if the video cannot load
+        video.addEventListener("error", () => {
+            videoHelp.textContent =
+                "Video could not load. Check the filename, folder, " +
+                "and make sure the file is a supported MP4 video.";
+        });
+
+        video.addEventListener("loadedmetadata", () => {
+            videoHelp.textContent = "Enjoy this little birthday video! 💗";
+        });
+    </script>
+
+</body>
+</html>
